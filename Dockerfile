@@ -1,14 +1,7 @@
-############################################################
-# Dockerfile to run an OrientDB (Graph) Container
-############################################################
-
 FROM java:8-jdk
-
-MAINTAINER Orient Technologies LTD (info@orientdb.com)
 
 ENV ORIENTDB_VERSION 2.2-alpha
 
-#download distribution tar, untar and delete databases
 RUN mkdir /orientdb && \
   wget -O orientdb-community-$ORIENTDB_VERSION.tar.gz "http://orientdb.com/download.php?email=unknown@unknown.com&file=orientdb-community-$ORIENTDB_VERSION.tar.gz&os=linux" \
   && tar -xvzf orientdb-community-$ORIENTDB_VERSION.tar.gz -C /orientdb --strip-components=1\
@@ -17,7 +10,7 @@ RUN mkdir /orientdb && \
 
 ENV PATH /orientdb/bin:$PATH
 
-VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config"]
+VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config", "/orientdb/bin", "/orientdb/lib"]
 
 WORKDIR /orientdb
 
