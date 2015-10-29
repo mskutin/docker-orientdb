@@ -10,7 +10,9 @@ RUN mkdir /orientdb && \
 
 ENV PATH /orientdb/bin:$PATH
 
-VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config", "/orientdb/bin", "/orientdb/lib", "/orientdb/log"]
+VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config", "/orientdb/bin", "/orientdb/lib", "/orientdb/log", "/orientdb"]
+
+RUN touch /orientdb/log/server.log
 
 WORKDIR /orientdb
 
