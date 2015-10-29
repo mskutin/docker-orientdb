@@ -10,7 +10,7 @@ RUN mkdir /orientdb && \
 
 ENV PATH /orientdb/bin:$PATH
 
-VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config", "/orientdb/bin", "/orientdb/lib", "/orientdb"]
+VOLUME ["/orientdb/backup", "/orientdb/databases", "/orientdb/config", "/orientdb/bin", "/orientdb/lib", "/orientdb/log"]
 
 WORKDIR /orientdb
 
@@ -21,4 +21,4 @@ EXPOSE 2424
 EXPOSE 2480
 
 # Default command start the server
-CMD ["server.sh"]
+CMD ["nohup server.sh > /orientdb/log/server.log"]
